@@ -1,0 +1,65 @@
+<section class="container p-5">
+    <h2 class="pb-4">Suas informações</h2>
+
+    <form [formGroup]="usuarioForm" (ngSubmit)="salvarUsuario()">
+        <div class="mb-3">
+        <label for="nome" class="form-label">Nome completo</label>
+        <input
+          type="text"
+          class="form-control"
+          id="nome"
+          placeholder="João da Silva"
+          formControlName="nome"
+          [class.is-valid]="usuarioForm.get('nome')?.valid && (usuarioForm.get('nome')?.dirty || usuarioForm.get('nome')?.touched)"
+          [class.is-invalid]="usuarioForm.get('nome')?.invalid && (usuarioForm.get('nome')?.touched || usuarioForm.get('nome')?.dirty)">
+        <app-mensagem-erro [control]="controle('nome')"></app-mensagem-erro>
+        </div>
+
+        <div class="mb-3">
+        <label for="email" class="form-label">E-mail</label>
+        <input
+          type="email"
+          class="form-control"
+          id="email"
+          placeholder="joaodasilva@example.com"
+          formControlName="email"
+          [class.is-valid]="usuarioForm.get('email')?.valid && (usuarioForm.get('email')?.dirty || usuarioForm.get('email')?.touched)"
+          [class.is-invalid]="usuarioForm.get('email')?.invalid && (usuarioForm.get('email')?.touched || usuarioForm.get('email')?.dirty)">
+        <app-mensagem-erro [control]="controle('email')"></app-mensagem-erro>
+        </div>
+
+
+        <div class="mb-3">
+        <label for="telefone" class="form-label">Telefone</label>
+        <input
+          type="tel"
+          mask="(00) 0 0000 0000"
+          class="form-control"
+          id="telefone"
+          placeholder="(00) 0 0000 0000"
+          formControlName="telefone"
+          [class.is-valid]="usuarioForm.get('telefone')?.valid && (usuarioForm.get('telefone')?.dirty || usuarioForm.get('telefone')?.touched)"
+          [class.is-invalid]="usuarioForm.get('telefone')?.invalid && (usuarioForm.get('telefone')?.touched || usuarioForm.get('telefone')?.dirty)">
+        <app-mensagem-erro [control]="controle('telefone')"></app-mensagem-erro>
+        </div>
+
+        <div class="mb-3">
+        <label for="exampleInputEmail1" class="form-label">Data de nascimento</label>
+        <input
+          type="date"
+          class="form-control"
+          id="exampleInputEmail1"
+          formControlName="dataNascimento"
+          [class.is-valid]="usuarioForm.get('dataNascimento')?.valid && (usuarioForm.get('dataNascimento')?.dirty || usuarioForm.get('dataNascimento')?.touched)"
+          [class.is-invalid]="usuarioForm.get('dataNascimento')?.invalid && (usuarioForm.get('dataNascimento')?.touched || usuarioForm.get('dataNascimento')?.dirty)">
+        <app-mensagem-erro [control]="controle('dataNascimento')"></app-mensagem-erro>
+        </div>
+
+        <button type="submit" (click)="verificaEnviado()" class="btn btn-primary w-100" id="adicionar" [disabled]="usuarioForm.invalid">Next</button>
+        @if(enviado) {
+          <div class="text-success">
+            Usuário adicionado com sucesso!
+          </div>
+        }
+    </form>
+</section>
