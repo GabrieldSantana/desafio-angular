@@ -20,6 +20,7 @@ export class FormularioComponent implements OnInit, OnDestroy {
 
   constructor() {}
 
+  // Utilizando o OnInit, que garante que o componente está pronto para ser utilizado, e responsável por chamar a função de inicializar o formulário
   ngOnInit() {
     this.inicializarFormulario();
   }
@@ -52,6 +53,7 @@ export class FormularioComponent implements OnInit, OnDestroy {
     return control as FormControl;
   }
 
+  // Utilizando o OnDestroy para limpar o formulário quando o componente é destruído
   ngOnDestroy(): void {
     this.usuarioForm.reset(); // Limpa o formulário
     this.enviado = false; // Reseta o estado de enviado
