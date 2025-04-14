@@ -1,5 +1,6 @@
-import { Component, Input } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+
 import { NgxMaskDirective } from 'ngx-mask';
 import { MensagemErroComponent } from "../../componentes/mensagem-erro/mensagem-erro.component";
 
@@ -14,7 +15,7 @@ import { MensagemErroComponent } from "../../componentes/mensagem-erro/mensagem-
   templateUrl: './formulario.component.html',
   styleUrl: './formulario.component.css'
 })
-export class FormularioComponent {
+export class FormularioComponent implements OnInit{
 
   usuarioForm!: FormGroup
 
