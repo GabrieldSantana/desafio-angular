@@ -1,0 +1,14 @@
+@if(control.errors && control.touched) {
+
+    @if(control.errors['required']) {
+      <div class="text-danger">
+          <small>Campo obrigatório</small>
+      </div>
+  }
+
+  @if(control.errors['email']) {
+      <div class="text-danger">
+          <small>Formato de e-mail inválido</small>
+      </div>
+  }
+}
