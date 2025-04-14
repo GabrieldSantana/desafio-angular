@@ -1,0 +1,93 @@
+<section class="container p-5">
+  <div class="d-flex justify-content-center">
+    <h2 class="text-center text-danger pb-1 mb-4 border-bottom border-3 border-danger d-inline-block">INSCRIÇÃO</h2>
+  </div>
+
+  <form [formGroup]="usuarioForm" (ngSubmit)="salvarUsuario()" class="row">
+    <!-- Campo Nome -->
+    <div class="col-md-6 mb-3">
+      <label for="nome" class="form-label">Nome<span class="text-danger">*</span></label>
+      <input
+        type="text"
+        class="form-control"
+        id="nome"
+        placeholder="João da Silva"
+        formControlName="nome"
+        [class.is-valid]="usuarioForm.get('nome')?.valid && (usuarioForm.get('nome')?.dirty || usuarioForm.get('nome')?.touched)"
+        [class.is-invalid]="usuarioForm.get('nome')?.invalid && (usuarioForm.get('nome')?.touched || usuarioForm.get('nome')?.dirty)">
+      <app-mensagem-erro [control]="controle('nome')"></app-mensagem-erro>
+    </div>
+
+    <!-- Campo Email -->
+    <div class="col-md-6 mb-3">
+      <label for="email" class="form-label">Email<span class="text-danger">*</span></label>
+      <input
+        type="email"
+        class="form-control"
+        id="email"
+        placeholder="joaodasilva@example.com"
+        formControlName="email"
+        [class.is-valid]="usuarioForm.get('email')?.valid && (usuarioForm.get('email')?.dirty || usuarioForm.get('email')?.touched)"
+        [class.is-invalid]="usuarioForm.get('email')?.invalid && (usuarioForm.get('email')?.touched || usuarioForm.get('email')?.dirty)">
+      <app-mensagem-erro [control]="controle('email')"></app-mensagem-erro>
+    </div>
+
+    <!-- Campo Estado -->
+    <div class="col-md-6 mb-3">
+      <label for="estado" class="form-label">Estado<span class="text-danger">*</span></label>
+      <select
+        class="form-select"
+        id="estado"
+        formControlName="estado"
+        [class.is-valid]="usuarioForm.get('estado')?.valid && (usuarioForm.get('estado')?.dirty || usuarioForm.get('estado')?.touched)"
+        [class.is-invalid]="usuarioForm.get('estado')?.invalid && (usuarioForm.get('estado')?.touched || usuarioForm.get('estado')?.dirty)">
+        <option value="" disabled selected>Estado</option>
+        <option value="SP">Pernambuco</option>
+        <option value="SP">São Paulo</option>
+        <option value="RJ">Rio de Janeiro</option>
+        <option value="MG">Minas Gerais</option>
+      </select>
+      <app-mensagem-erro [control]="controle('estado')"></app-mensagem-erro>
+    </div>
+
+    <!-- Campo Cidade -->
+    <div class="col-md-6 mb-3">
+      <label for="cidade" class="form-label">Cidade<span class="text-danger">*</span></label>
+      <select
+        class="form-select"
+        id="cidade"
+        formControlName="cidade"
+        [class.is-valid]="usuarioForm.get('cidade')?.valid && (usuarioForm.get('cidade')?.dirty || usuarioForm.get('cidade')?.touched)"
+        [class.is-invalid]="usuarioForm.get('cidade')?.invalid && (usuarioForm.get('cidade')?.touched || usuarioForm.get('cidade')?.dirty)">
+        <option value="" disabled selected>Cidade</option>
+        <option value="SaoPaulo">Recife</option>
+        <option value="SaoPaulo">São Paulo</option>
+        <option value="RioDeJaneiro">Rio de Janeiro</option>
+        <option value="BeloHorizonte">Belo Horizonte</option>
+      </select>
+      <app-mensagem-erro [control]="controle('cidade')"></app-mensagem-erro>
+    </div>
+
+    <!-- Campo Instituição -->
+    <div class="col-md-12 mb-3">
+      <label for="instituicao" class="form-label">Instituição:</label>
+      <input
+        type="text"
+        class="form-control"
+        id="instituicao"
+        placeholder="Nome da instituição"
+        formControlName="instituicao">
+    </div>
+
+    <!-- Botão Continuar -->
+    <div class="col-md-12 text-center">
+      <button type="submit" (click)="verificaEnviado()" class="btn btn-success" [disabled]="usuarioForm.invalid">Continuar</button>
+    </div>
+    <!-- Mensagem de sucesso -->
+    @if(enviado) {
+      <div class="col-md-12 text-success text-center mt-3 align-items-center">
+        Cadastro realizado com sucesso!
+      </div>
+    }
+  </form>
+</section>
