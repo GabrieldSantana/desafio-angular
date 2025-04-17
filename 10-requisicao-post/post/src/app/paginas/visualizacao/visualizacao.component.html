@@ -1,5 +1,21 @@
 <section>
   <div class="container m-5 row gap-4">
-
+    <form [formGroup]="idForm">
+      <div class="col-md-6">
+        <div class="mb-3">
+          <label for="userId" class="form-label">ID do Usuário</label>
+          <input
+          type="number"
+          class="form-control"
+          id="id"
+          placeholder="Digite o ID do usuário"
+          formControlName="id" />
+        </div>
+        <button class="btn btn-primary" (click)="verificarUsuario()">Confirmar</button>
+      </div>
+    </form>
+    @if(verificado) {
+      <app-card></app-card>
+    }
   </div>
 </section>
