@@ -1,0 +1,20 @@
+{
+  "usuarios": [
+    {
+      "id": 1,
+      "usuarioAtivo": true
+    },
+    {
+      "id": 2,
+      "usuarioAtivo": false
+    },
+    {
+      "id": 3,
+      "usuarioAtivo": true
+    },
+    {
+      "id": 4,
+      "usuarioAtivo": false
+    }
+  ]
+}
