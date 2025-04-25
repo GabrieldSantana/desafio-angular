@@ -1,0 +1,126 @@
+<app-cabecalho></app-cabecalho>
+
+<section class="fundo-container min-vh-100">
+  <app-titulo [titulo]="'Adicione um pensamento novo:'"></app-titulo>
+
+  <section class="container py-5">
+    <div class="card shadow-sm rounded-3" style="background-color: rgb(193, 240, 255);">
+      <div class="card-body p-4 m-5">
+        <!-- Formulário -->
+        <form [formGroup]="pensamentoForm" (ngSubmit)="enviar()">
+          <!-- Campo Pensamento -->
+          <div class="mb-5">
+            <label for="pensamento" class="form-label fw-bold text-primary"><h5 class="fw-bold">Pensamento</h5></label>
+            <textarea
+              class="form-control"
+              id="pensamento"
+              rows="3"
+              placeholder="Digite seu pensamento"
+              formControlName="pensamento"
+              [ngClass]="{'is-invalid': pensamentoForm.get('pensamento')?.invalid && pensamentoForm.get('pensamento')?.touched}"
+            ></textarea>
+            @if(pensamentoForm.get('pensamento')?.hasError('minlength') && pensamentoForm.get('pensamento')?.touched) {
+              <div
+              class="invalid-feedback"> O pensamento deve ter no mínimo 3 caracteres.</div>
+            }
+            @if(pensamentoForm.get('pensamento')?.hasError('required') && pensamentoForm.get('pensamento')?.touched) {
+              <div
+              class="invalid-feedback"> O pensamento é obrigatório.</div>
+            }
+          </div>
+
+
+          <!-- Campo Autor(a) ou Fonte -->
+          <div class="mb-5">
+            <label for="autor" class="form-label fw-bold text-primary">
+              <h5 class="fw-bold">Autor(a) ou Fonte</h5>
+            </label>
+            <input
+            type="text"
+            class="form-control"
+            id="autor"
+            placeholder="Insira o nome do(a) autor(a) ou fonte"
+            formControlName="autor"
+            [ngClass]="{'is-invalid': pensamentoForm.get('autor')?.invalid && pensamentoForm.get('autor')?.touched}">
+
+            @if(pensamentoForm.get('autor')?.hasError('minlength') && pensamentoForm.get('autor')?.touched) {
+              <div
+              class="invalid-feedback"> O autor deve ter no mínimo 2 caracteres.</div>
+            }
+            @if(pensamentoForm.get('autor')?.hasError('required') && pensamentoForm.get('autor')?.touched) {
+              <div
+              class="invalid-feedback"> O autor é obrigatório.</div>
+            }
+          </div>
+
+          <!-- Seleção de Modelo -->
+          <div class="mb-3 d-grid">
+            <label class="form-label fw-bold text-primary"><h5 class="fw-bold">Selecione o modelo do card:</h5></label>
+            <div class="d-flex gap-3">
+              <div class="form-check col-4">
+                <input class="form-check-input" type="radio" name="modelo" id="modelo1" value="'1'" formControlName="modelo" checked>
+                <label class="form-check-label" for="modelo1">Modelo 1</label>
+              </div>
+              <div class="form-check col-4">
+                <input class="form-check-input" type="radio" name="modelo" id="modelo2" value="'2'" formControlName="modelo">
+                <label class="form-check-label" for="modelo2">Modelo 2</label>
+              </div>
+              <div class="form-check col-4">
+                <input class="form-check-input" type="radio" name="modelo" id="modelo3" value="'3'" formControlName="modelo">
+                <label class="form-check-label" for="modelo3">Modelo 3</label>
+              </div>
+            </div>
+          </div>
+
+          <!-- Seção de Prévia -->
+          <div class="row mb-4">
+            <div class="container col-12 col-md-4 mb-3">
+              <app-card
+                [previa]="true"
+                [pensamento]="'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.'"
+                [autor]="'Autora da Silva Sauro'"
+                [classeSombra]="'sombra-azul'">
+              </app-card>
+            </div>
+            <div class="container col-12 col-md-4 mb-3">
+              <app-card
+                [previa]="true"
+                [pensamento]="'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.'"
+                [autor]="'Autora da Silva Sauro'"
+                [classeSombra]="'sombra-ciano'">
+              </app-card>
+            </div>
+            <div class="container col-12 col-md-4 mb-3">
+              <app-card
+                [previa]="true"
+                [pensamento]="'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.'"
+                [autor]="'Autora da Silva Sauro'"
+                [classeSombra]="'sombra-verde'">
+              </app-card>
+            </div>
+          </div>
+
+          <!-- Botões -->
+          <div class="pt-5 mt-5 d-flex justify-content-center gap-5">
+            <button type="submit" class="btn btn-primary px-5" [disabled]="pensamentoForm.invalid">Salvar</button>
+            <button type="button" class="btn btn-primary px-5" (click)="cancelar()">Cancelar</button>
+          </div>
+
+          <!-- <div class="mt-3 text-center" *ngIf="mensagem.tipo">
+            <span
+              class="fw-bold"
+              [ngClass]="{
+                'text-success': mensagem.tipo === 'success',
+                'text-danger': mensagem.tipo === 'error' || mensagem.tipo === 'invalid'
+              }"
+            >
+              {{ mensagem.texto }}
+            </span>
+          </div> -->
+        </form>
+      </div>
+    </div>
+  </section>
+</section>
+
+<app-rodape></app-rodape>

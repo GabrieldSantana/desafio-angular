@@ -1,0 +1,21 @@
+<div>
+  <div class="card" [ngClass]="[classeSombra]">
+    <div class="d-flex flex-column gap-4 p-4 sombra">
+      @if (previa) {
+        <h4 class="card-title">Prévia</h4>
+      }
+      <p class="card-text">{{ pensamento }}</p>
+      <div class="row">
+        <p class="card-text text-primary fw-bold col-7">{{ autor }}</p>
+        @if (!previa) {
+          <button class="btn btn-sm btn-outline-primary col-2 mx-2" (click)="aoEditar()">
+            <i class="bi bi-pencil-square"></i>
+          </button>
+          <button class="btn btn-sm btn-outline-danger col-2" (click)="aoDeletar()">
+            <i class="bi bi-trash"></i>
+          </button>
+        }
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,10 @@
+<section class="py-4 d-flex flex-column container-fluid align-items-center gap-4">
+  <h1
+    [innerHTML]="titulo"
+    class="text-primary"
+  ></h1>
+
+  @if(possuiBotao) {
+    <button class="btn btn-primary p-2" (click)="navegarParaFormulario()">Adicionar pensamento</button>
+  }
+</section>

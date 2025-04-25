@@ -1,0 +1,5 @@
+.fundo-container {
+  background-image: url(../../../assets/background-completo.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
